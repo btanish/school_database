@@ -1,1 +1,129 @@
+<html>
+<head>
+</head>
+<body>
+	<script type="text/javascript">
+	var grade1 = ["Sandeep","Aditya"];
+	var grade2 = ["Tom","Bobby"];
+	var grade3 = ["Bob","Loki"];
+	var grade4 = ["Ashwin","Calvin"];
+	var schoolName1 = [grade1,grade2];
+	var schoolName2 = [grade3,grade4];
+	var schools = [schoolName1,schoolName2];
+	var kidInput = document.getElementById('kidName').value;
+	var WarmSprings = schoolName1;
+	var JamesLeich = schoolName2;
+	/*for(i=0; i++; i<schools.length){
+		school = schools[i]
+		for(j=0; j++; j<school.length){
+		grade = school[j]
+		for(k=0; k++; k<grade.length){
+		document.write(grade[k])
+		}
+		}
+		}*/
+	function searchkid() {
+		var found_kid = false
+		var kid_search = document.getElementById('kidsearch').value
+			for(i=0; i<schools.length; i++ ) {
+				//document.write(i);
+				var school = schools[i];
+					//document.write(schools.length)
+					for(j=0; j<school.length; j++){
+						var grade = school[j];
+							for(k=0; k<grade.length; k++){
+								//document.write(grade[k] + ", " + "</br>");
+								var names = grade[k];								
+								if (names == kid_search){
+									found_kid = true;
+									//document.write(names + " is Equal to " + kid_search + "." + "</br>");
+								}//else{
+									//document.write(names + " is Not Equal to " + kid_search + "." + "</br>");
+								//}
+							}
+					}
+			}
+		if (found_kid == true){
+			document.getElementById('Add').innerHTML = kid_search + " was found in the database.";
+		}else{
+			document.getElementById('Add').innerHTML = kid_search + " was not found in the database.";
+		}
+			
+	}
 
+	function search() {
+			document.getElementById('searchForm').innerHTML = '<input type="text" id="kidsearch"value="Kid Name"></input>' + '</br>' + '<button onclick="searchkid()">Search Your Kid </button>'
+				//document.write(schools.length)
+				/*for(i=0; i<1;i++){
+					document.write(i);
+					}*/
+
+				//document.getElementById('DisplaySearch').innerHTML="WarmSprings" + "</br>" + "Grade1:" + "</br>" + grade1 + "</br>" + "Grade 2" + "</br>" + grade2 +"</br>" + "</br>" + "James Leich" + "</br>" + "Grade 3" + "</br>" + grade3 + "</br>" + "Grade 4" + "</br>" + grade4;
+		}
+
+	function addChildName() {
+		var grade = document.getElementById('Grade').value;
+		var tmpgrade = grade;
+		var kidInput = document.getElementById('kidName').value;
+		//document.write(kidInput);
+		for(i=0; i<schools.length; i++ ) {
+			school = schools[i]
+				for(j=0; j<school.length; j++){
+					Grade = school[j]
+					if (grade == Grade){
+						Grade.push(kidInput)
+					}
+				}
+		}
+		//grade.push(kidInput);
+		//document.write(tmpgrade.length+ ' ' + grade.length);
+		//document.getElementById('Add').innerHTML="WarmSprings" + "</br>" + "Grade1:" + "</br>" + grade1 + "</br>" + "Grade 2" + "</br>" + grade2 +"</br>" + "</br>" + "James Leich" + "</br>" + "Grade 3" + "</br>" + grade3 + "</br>" + "Grade 4" + "</br>" + grade4;
+
+	}
+
+	function displayKids() {
+		//document.write("ajay");
+		document.getElementById('Add').innerHTML="WarmSprings" + "</br>" + "Grade1:" + "</br>" + grade1 + "</br>" + "Grade 2" + "</br>" + grade2 +"</br>" + "</br>" + "James Leich" + "</br>" + "Grade 3" + "</br>" + grade3 + "</br>" + "Grade 4" + "</br>" + grade4;
+	}
+
+	</script>
+
+	<style>
+	input{
+		background-color:#ADD8E6;
+	}
+	</style>
+
+	<div id="Add Child Form">
+		<form name="information">
+			<input type="text" name="School" >
+			Schools (Pick one of 'Warm Springs', 'James Leich')
+			</input>
+			</br>
+			<input type="text" id="Grade">
+			Grades (Pick one according to school: Warm Springs: grade1, grade2 , James Leich: grade3, grade4)
+			</input>
+			</br>
+			<input type="text" id="kidName">
+			Kid name
+			</input>
+			</br>
+			<input type="button" value="Add Child" onclick="addChildName()">
+			<input type="reset" value="Reset">
+			<input type="button" value="Search" onclick="search()">
+			<input type="button" value="Display The Kids" onclick="displayKids()">
+
+		</form>
+	</div>
+	<div id="Search">
+		<p id="DisplaySearch">
+		</p>
+		<p id="Add">
+		</p>
+		<p id="searchForm">
+		</p>
+		<p id="return">
+		</p>
+	</div>
+</body>
+</html>
